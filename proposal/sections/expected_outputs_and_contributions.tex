@@ -1,0 +1,16 @@
+\section{Expected Outputs and Contributions}
+
+The expected outcome is that OPSD will improve VQA performance relative to conventional 
+SFT in cases in which the privileged cropped region provides stronger visual evidence than the full-image.
+This expected outcome is based on the findings of \textcite{yuan2026vision} that 
+multimodal models could perform better when conditioned on evidence-centered crops versus full images.
+
+However, the size of the improvement is expected to vary based on the model size and architecture.
+Each model may display different levels of regional-to-global perception gaps. As a result, different
+amounts of useful knowledge may be available for self-distillation. This would allow the study to provide 
+evidence on how dependent the effectiveness of OPSD is on VLM architecture and scale.
+
+The key contribution of this project would be the controlled comparison between OPSD and SFT for
+general-domain Visual Genome VQA across multiple VLM architectures and scales. Potential challenges 
+include the additional computational cost needed for each teacher and student forward pass as well as the 
+possibility that some image crops may provide little to no advantage over the original full size image. 

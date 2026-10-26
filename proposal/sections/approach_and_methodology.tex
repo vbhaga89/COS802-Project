@@ -1,0 +1,16 @@
+\section{Approach and Methodology}
+
+For the approach and methodology, a sequential flow will be used on three models. The three models are 
+SmolVLM-500M, BLIP and MiniCPIM-V 4.6. Each model has different capabilities and architectures.
+First, the SFT baseline will be established. For each model, a conventional SFT condition will be trained
+using full image + question and ground-truth answer. Thereafter, the OPSD fine-tuning will be performed. 
+Two policies will be formed, one for the student and one for the teacher. The student receives the full image
+and question and generates its own answer trajectory. The privileged teacher receives a relevant region (cropped portion of image) 
+that contains more focused visual evidence relative to the question \parencite{yuan2026vision}.
+The teacher then evaluates the student's generated trajectory and provides token-level probability distributions
+\parencite{zhao2601self}. The student is trained to minimise the divergence between these two policies. 
+
+This method could outperform SFT for two main arguments. Firstly, because of on-policy supervision, the train-inference
+distribution mismatch will be reduced. Secondly, OPSD provides the student with the teacher's full 
+next-token probability distribution which may be more useful than simply receiving one correct answer token.
+

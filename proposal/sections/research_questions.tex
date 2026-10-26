@@ -1,0 +1,25 @@
+\section{Research Questions}
+
+Conventional Supervised Fine-Tuning (SFT) is a method of adapting a pre-trained language
+model using a smaller dataset that contains labelled examples. For SFT, the model
+learns to produce the desired outputs from a given input. The one major issue with
+SFT is that it learns from fixed ground-truth outputs. This creates a distribution mismatch between
+training and inference \parencite{zhao2601self}. On-policy
+distillation (OPD) addresses this mismatch by having the student LLM sample its own trajectories
+while a teacher LLM provides dense token-level supervision. However, this also has a problem in that
+it requires a larger, teacher LLM. To address both of these issues of SFT and OPD, \textcite{zhao2601self}
+introduced On-Policy Self-Distillation (OPSD) in which a single LLM acts as both teacher and student with 
+different contexts.
+
+Currently, OPSD work has mainly been demonstrated for LLM reasoning. More recently, 
+\textcite{yuan2026vision} introduced Vision-OPD which showed that the idea can be transferred
+to multimodal models as well. This is done by using a cropped, evidence specific image
+for the teacher and a full-image version for the student. 
+
+The following research questions highlight the intent of this proposal to 
+further understand the capabilities of OPSD for visual question answering (VQA):
+
+\begin{enumerate}
+    \item To what extent does OPSD improve VQA performance compared with conventional SFT?
+    \item How does the effectiveness of OPSD vary across vision-language models with different model sizes and architectures?
+\end{enumerate}

@@ -1,0 +1,21 @@
+\section{Evaluation Strategy}
+
+In terms of evaluation, a core comparison will be performed for each architecture. This will involve
+comparing the base model vs SFT vs OPSD. The same train, validation and test split will be used
+for each method/model used. Performance will be measured using BERTScore-F1 as the primary metric
+together with normalised exact-match accuracy as a secondary metric.
+
+BERTScore compares generated and ground-truth answers using contextual token embeddings making it
+suitable for open-ended VQA where semantically equivalent answers are still correct. Normalised exact-match 
+accuracy will provide a stricter complementary metric. To ensure this metric is used correctly,
+outputs will be preprocessed for case, punctuation, articles and formatting differences.
+
+For RQ1, the base model, SFT and OPSD performances will be compared within each model. This will determine
+whether OPSD provides a consistent performance improvement over SFT and the base model without fine-tuning. For RQ2,
+the magnitude of this improvement will be compared across the different models tested. This enables one to 
+assess whether the effectiveness of OPSD varies according to model size and architecture.
+
+For this experiment, there are two main baselines. The base model serves as the pre-fine-tuned baseline.
+This establishes the performance of a pretrained VLM on the Visual Genome dataset before any task-specific
+adaptation. The main methodological baseline is the SFT model. This is the main comparator for OPSD. The OPSD model
+is the proposed method.
