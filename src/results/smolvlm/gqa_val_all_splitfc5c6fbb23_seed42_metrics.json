@@ -1,0 +1,25 @@
+{
+  "dataset": "GQA",
+  "model_key": "smolvlm",
+  "model_id": "HuggingFaceTB/SmolVLM-500M-Instruct",
+  "seed": 42,
+  "val_fingerprint": "fc5c6fbb23",
+  "n_validation_rows": 753,
+  "n_evaluated": 753,
+  "primary_metric": "BERTScore-F1",
+  "bertscore_model": "roberta-large",
+  "full_bertscore_f1": 0.9257472157478333,
+  "crop_bertscore_f1": 0.9250770211219788,
+  "teacher_advantage": -0.0006701946258544922,
+  "full_exact_match": 0.5564409030544488,
+  "crop_exact_match": 0.5670650730411687,
+  "exact_match_teacher_advantage": 0.010624169986719889,
+  "potentially_distillable_fraction": 0.11155378486055777,
+  "teacher_hurts_fraction": 0.10092961487383798,
+  "case_counts": {
+    "both_correct": 343,
+    "both_wrong": 250,
+    "teacher_can_help": 84,
+    "teacher_hurts": 76
+  }
+}

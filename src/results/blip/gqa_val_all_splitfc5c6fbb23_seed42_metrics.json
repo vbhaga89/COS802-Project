@@ -1,0 +1,25 @@
+{
+  "dataset": "GQA",
+  "model_key": "blip",
+  "model_id": "Salesforce/blip-vqa-base",
+  "seed": 42,
+  "val_fingerprint": "fc5c6fbb23",
+  "n_validation_rows": 753,
+  "n_evaluated": 753,
+  "primary_metric": "BERTScore-F1",
+  "bertscore_model": "roberta-large",
+  "full_bertscore_f1": 0.9568483829498291,
+  "crop_bertscore_f1": 0.9587327241897583,
+  "teacher_advantage": 0.0018843412399291992,
+  "full_exact_match": 0.5816733067729084,
+  "crop_exact_match": 0.602921646746348,
+  "exact_match_teacher_advantage": 0.021248339973439556,
+  "potentially_distillable_fraction": 0.07702523240371846,
+  "teacher_hurts_fraction": 0.055776892430278883,
+  "case_counts": {
+    "both_correct": 396,
+    "both_wrong": 257,
+    "teacher_can_help": 58,
+    "teacher_hurts": 42
+  }
+}

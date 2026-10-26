@@ -1,0 +1,25 @@
+{
+  "dataset": "GQA",
+  "model_key": "minicpm",
+  "model_id": "openbmb/MiniCPM-V-4.6",
+  "seed": 42,
+  "val_fingerprint": "fc5c6fbb23",
+  "n_validation_rows": 753,
+  "n_evaluated": 753,
+  "primary_metric": "BERTScore-F1",
+  "bertscore_model": "roberta-large",
+  "full_bertscore_f1": 0.9743274450302124,
+  "crop_bertscore_f1": 0.9740627408027649,
+  "teacher_advantage": -0.00026470422744750977,
+  "full_exact_match": 0.7410358565737052,
+  "crop_exact_match": 0.7450199203187251,
+  "exact_match_teacher_advantage": 0.003984063745019917,
+  "potentially_distillable_fraction": 0.055776892430278883,
+  "teacher_hurts_fraction": 0.05179282868525897,
+  "case_counts": {
+    "both_correct": 519,
+    "both_wrong": 153,
+    "teacher_can_help": 42,
+    "teacher_hurts": 39
+  }
+}
