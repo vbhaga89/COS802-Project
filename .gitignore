@@ -35,3 +35,10 @@ review_polarity
 *.png
 *.jpg
 *.JPG
+*.zip
+
+/src/data/crops
+/src/data/images
+/src/data/processed
+/src/data/raw
+/src/models
