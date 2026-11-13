@@ -5,13 +5,20 @@ description = "Add your description here"
 readme = "README.md"
 requires-python = ">=3.11"
 dependencies = [
-    "matplotlib>=3.11.2",
+    "accelerate>=1.0",
+    "bert-score>=0.3.13",
+    "bottleneck",
+    "huggingface-hub>=0.30",
+    "matplotlib>=3.8",
     "numpy>=2.4.6",
-    "pandas>=3.1.0",
-    "pillow>=13.0.0",
+    "pandas>=2",
+    "peft>=0.17",
+    "pillow>=10",
     "remotezip>=0.12.6",
     "requests>=2.34.2",
     "scikit-learn>=1.9.1",
     "torch>=2.14.1",
-    "tqdm>=4.70.1",
+    "torchvision",
+    "tqdm>=4.66",
+    "transformers>=5.7,<6",
 ]
