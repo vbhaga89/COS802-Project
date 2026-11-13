@@ -1,0 +1,9 @@
+{
+  "epoch": 3,
+  "mean_train_loss": 0.07397980795461279,
+  "val_bertscore_f1": 0.9706844687461853,
+  "val_exact_match_accuracy": 0.6865869853917662,
+  "optimizer_steps": 1305,
+  "skipped_examples": 0,
+  "is_best": true
+}

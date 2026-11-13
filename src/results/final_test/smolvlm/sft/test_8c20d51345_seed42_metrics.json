@@ -1,0 +1,11 @@
+{
+  "model_key": "smolvlm",
+  "method": "sft",
+  "test_fingerprint": "8c20d51345",
+  "seed": 42,
+  "n_test": 768,
+  "n_evaluated": 768,
+  "bertscore_model": "roberta-large",
+  "bertscore_f1": 0.9712052345275879,
+  "exact_match": 0.69140625
+}

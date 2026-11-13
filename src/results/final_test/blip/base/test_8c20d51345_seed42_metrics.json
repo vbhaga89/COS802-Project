@@ -1,0 +1,11 @@
+{
+  "model_key": "blip",
+  "method": "base",
+  "test_fingerprint": "8c20d51345",
+  "seed": 42,
+  "n_test": 768,
+  "n_evaluated": 768,
+  "bertscore_model": "roberta-large",
+  "bertscore_f1": 0.9568688869476318,
+  "exact_match": 0.5833333333333334
+}

@@ -1,0 +1,21 @@
+{
+  "method": "SFT",
+  "model_key": "minicpm",
+  "model_id": "openbmb/MiniCPM-V-4.6",
+  "seed": 42,
+  "world_size": 2,
+  "epochs": 3,
+  "selection_metric": "validation BERTScore-F1",
+  "bertscore_model": "roberta-large",
+  "best_epoch": 1,
+  "best_val_bertscore_f1": 0.9799960255622864,
+  "learning_rate": 0.0001,
+  "per_device_batch_size": 1,
+  "grad_accum_steps": 4,
+  "effective_batch_size": 8,
+  "lora_r": 8,
+  "lora_alpha": 16,
+  "train_examples": 3479,
+  "val_examples": 753,
+  "best_adapter_path": "/kaggle/working/models/sft/minicpm/seed42/best"
+}
