@@ -1,0 +1,17 @@
+\begin{abstract}
+On-Policy Self-Distillation (OPSD) enables a model to learn from a privileged version of its
+own context without requiring a separate larger teacher model. While OPSD has primarily been
+investigated for language-model reasoning, its effectiveness for vision-language models for visual question-answering remains
+less understood. This work evaluates OPSD for visual question answering using the GQA dataset. Question-grounded
+object annotations are used to construct privileged image crops for the teacher while the student
+receives the full image. OPSD is compared with conventional Supervised Fine-Tuning (SFT) across
+SmolVLM-500M-Instruct, BLIP-VQA-Base and MiniCPM-V 4.6 Results show that SFT substantially outperformed
+OPSD for SmolVLM and BLIP, while both methods achieved similar BERTScore-F1 performance for MiniCPM.
+The crop-conditioned teacher also provides only a weak average advantage over the full-image model, limiting
+the strength of the distillation signal. Qualitative analysis shows that privileged crops can help when
+relevant visual evidence is localised within a complex image, but may remove context required for
+broader scene understanding. These findings suggest that OPSD performance is strongly dependent on both
+model characteristics and the quality of the privileged context. While SFT remains the stronger general-purpose
+adaptation strategy in this setting, context-based self-distillation may be more effective in domains
+where privileged training-time information provides a clearer and more reliable advantage.
+\end{abstract}

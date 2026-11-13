@@ -1,0 +1,122 @@
+\section{Discussion}\label{discussion}
+
+The results show that OPSD did not consistently outperform conventional SFT for visual question
+answering. For SmolVLM and BLIP, SFT achieved substantially higher BertScore-F1 and exact-match
+performance, while MiniCPM showed similar results between the two approaches which can be seen in \autoref{tab:performance}. These findings
+provide a negative answer to RQ1 under the experimental conditions considered: privileged-context
+OPSD alone was not generally more effective than direct supervised fine-tuning. However, the magnitude
+of the difference varied considerably across architectures, providing a more nuanced answer for RQ2.
+
+\subsection{Why SFT Outperformed OPSD}
+
+The strongest explanation for the performance gap is the difference in supervision available to the
+two approaches. SFT receives direct supervision from the ground-truth answer at every training
+step. The optimisation objective therefore explicitly increases the likelihood of the correct target
+sequence. In contrast, OPSD condition used in this study receives no direct ground-truth supervision. Instead,
+the student is trained only to match the token-level distribution produced by the privileged
+teacher on the student's own generated trajectory.
+
+This observation becomes particularly important when the privileged teacher is only marginally better
+than the student. Prior to fine-tuning, the crop-conditioned teacher advantage was measured for each
+architecture. The BertScore-F1 advantage of the crop over the full image was $-0.00067$ for SmolVLM,
+$+0.00188$ for BLIP and $-0.00027$ for MiniCPM. These differences indicate that the privileged
+crop did not produce a consistently stronger teacher across architectures. Although the crop sometimes
+improved exact-match accuracy, its average advantage was small.
+
+OPSD relies on useful information being present in the difference between the teacher and student
+distributions. If the privileged teacher behaves similarly to or on occasion worse than the full-image
+student, this can result in the distillation signal providing limited information beyond the model's 
+existing behaviour. SFT, on the other hand, does not face this limitation since its supervisory signal
+is obtained from the labelled target (ground-truth answer). The relatively weak teacher advantage
+therefore provides a plausible explanation as to why OPSD remained close to the pretrained baseline for
+SmolVLM and BLIP while SFT produced better results.
+
+\subsection{Architecture-Dependent Behaviour}
+
+Although SFT was stronger overall, the relative OPSD-SFT gap decreased substantially across the
+three architectures. From \autoref{tab:paired_differences}, it can be seen that the paired BERTScore-F1 difference improved from (-0.0453) for 
+SmolVLM to (-0.0157) for BLIP and finally to approximately zero ((-0.0001)) for 
+MiniCPM. For MiniCPM, the 95\% bootstrap confidence interval crossed zero and OPSD 
+achieved slightly higher exact-match accuracy than SFT.
+
+The per-example analysis seen in \autoref{tab:per_example_comparison} reinforces this difference.
+SmolVLM showed a strong preference towards SFT, which achieved a higher BERTScore-F1 on 
+81.77\% of examples. In contrast, MiniCPM produced identical scores for 82.68\% of test 
+examples, with OPSD and SFT winning on 8.33\% and 8.98\% respectively. This suggests 
+that OPSD and SFT converged to substantially more similar behaviour for MiniCPM than 
+for the smaller models.
+
+These results suggest that the effectiveness of privileged-context self-distillation may depend
+on model characteristics. A stronger multimodal model such as MiniCPM, may already possess
+better visual grounding and reasoning capabilities, allowing it to make more effective use of
+subtle distributional differences between full-image and crop-conditioned contexts. On the other hand,
+a smaller model may benefit more from explicit labelled supervision than from a comparatively weak
+teacher signal. Importantly since only three architectures were evaluated, this pattern should not be used
+to infer a general relationship between model size and OPSD effectiveness but rather than indicator
+that OPSD performance cannot be assumed to transfer uniformly across VLM architectures.
+
+\subsection{Local Evidence Versus Global Context}
+
+An important limitation of the current OPSD setting is that the privileged visual context
+is only as useful as the crop from which it is constructed. Although GQA provides grounded
+object annotations, these annotations were not originally designed specifically for privileged-context 
+self-distillation. As a result, the generated crop may contain the target object without necessarily
+containing all of the visual evidence required to answer a question. The relatively weak teacher
+advantage observed before training supports this limitation. \autoref{fig:qualitative_examples} illustrates
+two images that represent this trade-off:
+
+\begin{figure}[h!]
+    \centering
+    
+    \begin{subfigure}{0.48\columnwidth}
+        \centering
+        \includegraphics[width=\linewidth]{images/opsd_example.png}
+        \caption{OPSD-favouring example.}
+        \label{fig:opsd}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}{0.48\columnwidth}
+        \centering
+        \includegraphics[width=\linewidth]{images/sft_example.png}
+        \caption{SFT-favouring example.}
+        \label{fig:sft}
+    \end{subfigure}
+
+    \caption{Representative MiniCPM examples illustrating the trade-off between localised privileged evidence and global scene context.}
+    \label{fig:qualitative_examples}
+\end{figure}
+
+In \autoref{fig:opsd}, OPSD correctly answers a question regarding the colour of the kite-surfer's 
+attire while the SFT produces the incorrect response. In this situation, the relevant visual evidence
+occupies only a relatively small portion of a rather visually complex image. In this case, the
+crop-conditioned teacher provides a more focused view of the relevant evidence, which is consistent with the
+intended benefit of privileged visual context. In contrast, \autoref{fig:sft} represents a case
+in which SFT correctly answer a question asking how large the boat was which OPSD got incorrect. Unlike
+the previous example, judging relative size requires information from the wider scene. By restricting
+the teacher to a local crop may therefore remove the contextual references required to make the correct
+judgement, even when padding is included.
+
+These two examples demonstrate that successful crop-based OPSD requires more than accurately localising
+the target object. The privileged context must preserve the complete evidence needed to answer the question.
+A crop than therefore be beneficial when the task depends mainly on fine-grained local evidence, but 
+potentially harmful when the required reasoning depends on global or relational context.
+
+\subsection{Limitations and Future Work}
+
+Several limitations should be considered. First, the experiment used a 5000-examle subset of
+GQA, which may disadvantage OPSD because it relies on indirect distributional supervision rather than
+direct target labels. In addition, additional datasets, architectures and random seeds 
+would also be required before drawing broader conclusions about OPSD performance across VLMs.
+
+Second, the privileged teacher used deterministic question-grounded crops. Although unsuitable
+spatial and relational questions were filtered, GQA was not designed specifically for crop-based privileged
+supervision. This implies that some crops may omit context required to answer a question. Future work
+could investigate multiple evidence regions, learned region selection, or combined local and global teacher views.
+
+Third, the OPSD condition used no supervised cross-entropy anchor. A useful extension would therefore be to
+combine OPSD with a small supervised objective and evaluate whether this improves stability while
+retaining the benefit of privileged information.
+
+Lastly, OPSD may be more effective in domains where the privileged context provides a stronger
+information advantage. For example, in medical imaging, a teacher could receive a radiologist-defined
+region of interest or lesion annotation while the student operated on the complete image. 

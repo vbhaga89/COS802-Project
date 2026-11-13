@@ -1,0 +1,84 @@
+\documentclass{sigkddExp}
+
+\usepackage{import}
+\usepackage{graphicx}
+\usepackage{hyperref}
+\usepackage[style=ieee,backend=biber]{biblatex} % APA-like citations
+\usepackage{subcaption}
+
+% Bibliography file
+\addbibresource{references.bib}
+
+% ==========================================
+% SPACING ADJUSTMENTS
+% ==========================================
+
+% 1. Paragraph spacing
+\setlength{\parskip}{5pt plus 1pt minus 1pt}
+\setlength{\parindent}{0pt}
+
+% 2. Spacing between tables/figures and surrounding text
+\setlength{\textfloatsep}{10pt plus 2pt minus 2pt}
+\setlength{\floatsep}{8pt plus 2pt minus 2pt}
+\setlength{\intextsep}{8pt plus 2pt minus 2pt}
+
+% 3. Caption spacing
+\usepackage{caption}
+
+\captionsetup[table]{
+    skip=8pt,
+    justification=centering
+}
+
+\captionsetup[figure]{
+    skip=6pt,
+    justification=centering
+}
+
+\pagestyle{plain}
+\pagenumbering{arabic}
+
+\makeatletter
+\def\section{%
+    \@startsection{section}{1}{\z@}{-10\p@ \@plus -4\p@ \@minus -2\p@}%
+    {3\p@}{\baselineskip 14pt\secfnt\@ucheadtrue}%
+}
+
+\makeatother
+
+\raggedbottom
+
+\begin{document}
+
+\title{A Comparative Study of Supervised Fine-Tuning and On-Policy Self-Distillation for Visual Question Answering}
+
+\numberofauthors{1}
+
+\author{
+\alignauthor Vishal Bhaga \\
+       \affaddr{Department of Computer Science}\\
+       \affaddr{University of Pretoria}\\
+       \email{u20470194@tuks.co.za}
+}
+
+\maketitle
+
+\import{sections/}{abstract.tex}
+
+\import{sections/}{introduction.tex}
+\newpage
+\import{sections/}{related_work.tex}
+
+\import{sections/}{methodology.tex}
+
+\import{sections/}{experimental_setup.tex}
+
+\import{sections/}{results.tex}
+
+\import{sections/}{discussion.tex}
+
+\import{sections/}{conclusion.tex}
+
+\printbibliography
+
+\end{document}

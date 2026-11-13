@@ -1,0 +1,68 @@
+\section{Experimental Setup}\label{experimental_setup}
+
+\subsection{Data and Splits}
+
+Experiments were conducted using the GQA dataset which is based on the Visual Genome dataset \parencite{hudson2019gqa}.
+A subset of 5000 question-answer pairs were used for the study. To prevent information leakage between
+splits, examples were partitioned at the image level such that the same image did not occur in more than 
+one split. This resulted in 3479 training examples, 753 validation examples, and 768 test examples.
+
+Only questions that were suitable for localised privileged visual context were retained. Questions requiring
+broader spatial context, complex relational reasoning or comparison across distant objects were removed. This
+was done using GQA metadata which provide information about question semantic types, structural types and functional
+programs. Textual spatial cues were also used to refine what questions to use. Lastly, questions were
+restricted to a maximum of two grounded objects.
+
+For each retained question, the union of the corresponding grounded object bounding boxes was used to 
+construct the privileged teacher crop. Crops were expanded by 12\% to preserve local surrounding context.
+Candidate crops were required to occupy between 2\% and 50\% of the original image before padding and no more
+than 55\% after padding. A minimum crop side length of 24 pixels was also enforced. No answer-side information
+was used during crop construction.
+
+\subsection{Vision-Language Models}
+
+Three VLMs with different architectures and capacities were evaluated:
+
+\begin{itemize}
+\item \textbf{SmolVLM-500M-Instruct}, representing a compact generative vision-language model;
+\item \textbf{BLIP-VQA-Base} \cite{li2022blip}, representing an encoder-decoder VQA architecture; and
+\item \textbf{MiniCPM-V 4.6}, representing a larger modern multimodal generative model.
+\end{itemize}
+
+Each architecture was evaluated under three conditions: the original pretrained model, SFT and OPSD.
+The pretrained condition provides a zero-shot reference, while SFT and PSD use the same training
+split and parameter-efficient adaptation framework.
+
+\subsection{Training Configuration}
+
+Both SFT and OPSD were implemented using LoRA \parencite{hu2021lora} with rank $r=8$ and scaling
+parameter $\alpha=16$. Only LoRA parameters were updated, while the underlying pretrained model
+weights remained frozen. Models were trained for three epochs using two NVIDIA T4 GPUs from 
+Kaggle with DistributedDataParallel. A per-device batch size of 1 and gradient accumulation
+over four steps were used, giving an effective batch size of $1 \times 2 \times 4 = 8$.
+
+The SFT learning rate was set to $1\times10^{-4}$, while the OPSD learning rate was set to $5\times10^{-6}$. The privileged teacher remained frozen
+while the full-image student LoRA parameters were updated. No supervised cross-entropy anchor was included
+in the OPSD objective. The Jensen-Shannon divergence was computed with equal weighting between the student
+and the teacher distributions.
+
+For each epoch, model performance was evaluated on the validation set. The checkpoint with the
+highest validation BETScore-F1 was selected as the final model for both SFT and OPSD. The held-out 
+test set was not used for hyperparameter selection or checkpoint selection.
+
+For each architecture, the following quantities were reported:
+
+\[F1_{\mathrm{Base}}~, F1_{\mathrm{SFT}},~ F1_{\mathrm{OPSD}}.\]
+
+The final quantity directly addresses RQ1, while comparing it across the three architectures
+addresses RQ2.
+
+Because SFT and OPSD were evaluated on the same test questions, an additional paired analysis was
+performed at the question level. For each example $i$, 
+
+\[F1^{(i)}_{\mathrm{OPSD}},
+F1^{(i)}_{\mathrm{SFT}}.\]
+
+The mean paired difference was reported together with a 95\% bootstrap confidence interval using
+10000 resamples. The proportions of test examples for which OPSD outperformed SFT, SFT outperformed OPSD or 
+the two methods tied were also recorded.

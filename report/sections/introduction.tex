@@ -1,0 +1,51 @@
+\section{Introduction}\label{intro}
+
+% Vision-langauge models (VLMs) have become increasingly effective at processing visual and textual
+% information which has enabled tasks such as image captioning and visual question answering (VQA).
+% VQA is particularly useful for multimodal reasoning since the model would need to interpret 
+% an image and a natural-language question before producing an answer. Supervised fine-tuning (SFT)
+% is a way in which pretrained VLMs can be adapted for such tasks, where model parameters are optimised
+% directly against labelled target answers.
+
+Supervised Fine-Tuning (SFT) is a widely used post-training method in which the pretrained model
+is adapted using labelled input-output examples. In visual question answering (VQA) tasks, this 
+typically involves conditioning a vision-language model (VLM) on an image and question and 
+optimising it to reproduce the ground-truth answer. Albeit effective, SFT learns from fixed
+reference outputs during training, whereas at inference time the model must generate and condition 
+on its own predictions. This difference between training trajectories and model-generated inference
+trajectories can introduce a distribution mismatch.
+
+On-policy distillation (OPD) addresses this issue by allowing a student model to generate its
+own trajectories while a teacher model provides dense token-level supervision on those same 
+trajectories. However, conventional OPD normally relies on a separate, stronger teacher model which
+can increase computation and memory requirements. To address both the SFT and the conventional OPD
+limitations, \textcite{zhao2601self} introduced On-Policy Self-Distillation (OPSD). OPSD is a fine-tuning
+technique in which a single model acts as both student and teacher under different contexts. The student
+would generate using standard inference context, while the teacher would receive privileged information
+that is only available during training.
+
+Majority of OPSD research has primarily focused on language-model reasoning. More recently,
+multimodal work such as Vision-OPD has demonstrated that on-policy distillation can also be applied
+to VLMs by providing a cropped, evidence-specific image to the teacher while the student receives the
+full image \parencite{yuan2026vision}. This provides a natural form of privileged visual information since the teacher receives
+a more focused representation of the evidence relevant to the question.
+
+This work investigates this principle for VQA using the GQA dataset. GQA provides structured 
+scene graphs and question grounding information that enable deterministic construction of
+question-relevant image crops without using the ground-truth answer \parencite{hudson2019gqa}. It is based on the Visual Genome 
+dataset \parencite{krishna2017visual}. 
+
+The approach is evaluated across three VLMs with different architectures and capacities: SmolVLM-500M-Instruct,
+BLIP, and MiniCPM-V 5.6. Each model is assessed under three conditions: the pretrained baseline,
+conventional SFT and OPSD. This enables a controlled experiment in which direct supervised adaptation can
+be compared to privileged-context self-distillation.
+
+The study addresses the following research questions:
+
+\begin{itemize}
+\item \textbf{RQ1:} To what extent does OPSD improve VQA performance compared with conventional SFT?
+\item \textbf{RQ2:} How does the relative OPSD-over-SFT performance vary across VLMs with different architectures and model characteristics?
+\end{itemize}
+
+The main contribution of this work is a cross-model empirical evaluation of OPSD for VQA using
+question-grounded visual crops as privileged information.

@@ -1,0 +1,51 @@
+\section{Related Work}\label{related_work}
+
+\subsection{Vision-Language Models and Visual Question Answering}
+
+Vision-language models combine visual and textual representations to support multimodal tasks.
+These tasks include image captioning and visual question answering (VQA). Models such as BLIP
+demonstrated that vision-language pretraining can transfer effectively across both understanding
+and generation task, including VQA \parencite{li2022blip}. VQA is an interesting test of 
+multimodal reasoning since models would need to identify relevant visual evidence and the relate
+it to a natural-language question. The GQA data enhances this setting towards compositional visual
+reasoning. This is done by constructing questions from Visual Genome scene graphs that come from
+functional programs that represent their semantics \parencite{hudson2019gqa}. These structured
+annotations also provide explicit grounding between questions and image objects, making GQA
+suitable for constructing privileged visual regions during training
+
+\subsection{Knowledge Distillation and On-Policy Learning}
+
+Knowledge distillation is a technique in which information is transferred from a stronger teacher model
+to a smaller student by encouraging the student to match the teacher's output distribution
+\parencite{hinton2015distilling}. In language generation, however, distillation from a fixed
+teacher-generated trajectory can expose the student to sequences produced by the teacher rather
+than to states encountered under its own policy. On-policy distillation addresses this
+mismatch by allowing the student to generate its own trajectories and obtain dense teacher
+supervision along those trajectories.
+
+\textcite{zhao2601self} extended this idea through On-Policy Self-Distillation (OPSD). Instead
+of requiring a separate teacher model, OPSD uses the same model for the teacher and the student under
+different contexts. The student receives only the information available during inference, while
+the teacher receives additional privileged information. The student generates the trajectory and
+training minimises token-level divergence between the student and teacher distributions along
+that trajectory. Their experiments focused on mathematical reasoning with large language models.
+
+\subsection{Multimodal On-Policy Self-Distillation}
+
+More recently, \textcite{yuan2026vision} proposed Vision-OPD, extending OPSD to fine-grained 
+multimodal understanding. They identified a regional-to-global perception gap in which
+multimodal models can answer questions correctly when presented with an evidence-centred image 
+crop but fail when viewing the corresponding full image. Vision-OPD therefore uses a crop-conditioned
+instance of the model as the teacher and a full-image instance as the student. The student
+generates trajectories while token-level supervision is provided by the privileged crop-conditioned
+teacher.
+
+Subsequent work has further highlighted that crop-conditioned supervision is not uniformly 
+beneficial. \textcite{hu2026evidencealigned} argue that cropping may actually remove useful
+surrounding context. Their findings motivate further evaluation of when privileged visual context
+provides useful self-distillation signals.
+
+The present work builds on this emerging research area but focuses specifically on VQA. It evaluates 
+OPSD against conventional SFT across three very different VLM architectures. Rather than assuming
+that privileged crops necessarily produce a superior teacher, the experiments explicitly measure the 
+teacher advantage and examine whether the relative benefit of OPSD varies across model architectures.

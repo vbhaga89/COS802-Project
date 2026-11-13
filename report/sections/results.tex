@@ -1,0 +1,168 @@
+\section{Results}\label{results}
+
+\subsection{Overall Performance}
+
+\autoref{tab:performance} summarises the final test performance of the pretrained baseline, SFT and
+OPSD conditions across all three VLMs. BertScore-F1 is reported as the primary metric with
+normalised exact match (EM) as the secondary metric. Best result per model and metric is shown in bold:
+
+\begin{table}[h!]
+\centering
+\caption{Final test performance across pretrained, SFT, and OPSD conditions.}
+\label{tab:performance}
+\resizebox{\columnwidth}{!}{
+\begin{tabular}{lcccccc}
+\hline
+\textbf{Model} &
+\textbf{Base F1} &
+\textbf{SFT F1} &
+\textbf{OPSD F1} &
+\textbf{Base EM} &
+\textbf{SFT EM} &
+\textbf{OPSD EM} \\
+\hline
+
+SmolVLM &
+0.9256 &
+\textbf{0.9712} &
+0.9259 &
+0.5651 &
+\textbf{0.6914} &
+0.5690 \\
+
+BLIP &
+0.9569 &
+\textbf{0.9727} &
+0.9570 &
+0.5833 &
+\textbf{0.7057} &
+0.5833 \\
+
+MiniCPM &
+0.9793 &
+\textbf{0.9806} &
+0.9805 &
+0.7904 &
+0.7904 &
+\textbf{0.7956} \\
+
+\hline
+\end{tabular}
+}
+\end{table}
+
+For SmolVLM, SFT produced a substantial improvement over the pretrained baseline, increasing
+BERTScore-F1 from 0.9256 to 0.9712 and exact match from 0.5651 to 0.6914. OPSD, in contrast,
+achieved 0.9259 BERTScore-F1 and 0.5690 exact match, remaining close to the pretrained baseline.
+A similar pattern was observed for BLIP. SFT improved BERTScore-F1 from 0.9569 to 0.9727 
+and exact match from 0.5833 to 0.7057. OPSD achieved a BERTScore-F1 of 0.9570 and an 
+exact match of 0.5833, again closely matching the pretrained model. The difference was 
+considerably smaller for MiniCPM. SFT achieved a BERTScore-F1 of 0.9806, while 
+OPSD achieved 0.9805. Exact-match performance was slightly higher under OPSD, 
+increasing from 0.7904 under SFT to 0.7956.
+
+\subsection{Paired Statistical Comparison}
+
+To directly compare SFT and OPSD, a paired analysis was performed over the same held-out test
+set. \autoref{tab:paired_differences} reports the mean per-exmaple BERTScore-F1 difference together with
+the corresponding 95\% bootstrap confidence interval:
+
+\begin{table}[h!]
+\centering
+\caption{Paired OPSD--SFT BERTScore-F1 differences on the test set.}
+\label{tab:paired_differences}
+\begin{tabular}{lcc}
+\hline
+\textbf{Model} &
+$\boldsymbol{\Delta_{\mathrm{OPSD-SFT}}}$ &
+\textbf{95\% CI} \\
+\hline
+
+SmolVLM &
+$-0.0453$ &
+$[-0.0483, -0.0423]$ \\
+
+BLIP &
+$-0.0157$ &
+$[-0.0192, -0.0123]$ \\
+
+MiniCPM &
+$-0.0001$ &
+$[-0.0026, 0.0024]$ \\
+
+\hline
+\end{tabular}
+\end{table}
+
+For SmolVLM and BLIP, the confidence intervals are entirely below zero, indicating a 
+consistent advantage for SFT over OPSD on the held-out test set. SmolVLM showed the 
+largest difference, with OPSD trailing SFT by 0.0453 BERTScore-F1, followed by BLIP 
+with a difference of 0.0157. For MiniCPM, the difference between OPSD and SFT was 
+negligible ((-0.0001)), and the confidence interval crossed zero. This indicates no 
+clear difference between the two methods in terms of BERTScore-F1 for this architecture. 
+OPSD nevertheless achieved a small absolute improvement in exact-match accuracy of 
+approximately 0.52 percentage points compared with SFT.
+
+\subsection{Per-example Win/Loss Analysis}
+
+To complement the aggregate BertScore-F1 comparsion, the paired test predictions were
+also analysed at the individual-question level. For each test example, OPSD was classified
+as better than SFT when its per-examle BertScore-F1 was higher, SFT was classified as better
+when its score was higher and equal scores were treated as ties. \autoref{tab:per_example_comparison}
+reports the resulting proportions across the 768 paired test examples:
+
+\begin{table}[h!]
+\centering
+\caption{Per-example BERTScore-F1 comparison between OPSD and SFT.}
+\label{tab:per_example_comparison}
+\resizebox{\columnwidth}{!}{
+\begin{tabular}{lccc}
+\hline
+\textbf{Model} &
+\textbf{OPSD Better} &
+\textbf{SFT Better} &
+\textbf{Tie} \\
+\hline
+
+SmolVLM &
+18.23\% &
+81.77\% &
+0.00\% \\
+
+BLIP &
+5.73\% &
+21.22\% &
+73.05\% \\
+
+MiniCPM &
+8.33\% &
+8.98\% &
+82.68\% \\
+
+\hline
+\end{tabular}
+}
+\end{table}
+
+The per-example analysis reinforces the aggregate findings for SmolVLM. SFT achieved a 
+higher BERTScore-F1 on 81.77\% of test questions, compared with 18.23\% for OPSD, with 
+no ties observed. This is consistent with the comparatively large negative paired 
+difference reported in Table~\ref{tab:paired_differences}. For BLIP, the majority of examples produced 
+identical BERTScore-F1 values under the two post-training strategies, with 73.05\% of 
+examples resulting in ties. Among the remaining examples, SFT was better on 21.22\% of 
+the test set, while OPSD was better on 5.73\%. This indicates that the aggregate SFT 
+advantage was driven by a relatively smaller subset of examples rather than by 
+differences across the entire test set. MiniCPM exhibited the highest degree of 
+agreement between SFT and OPSD, with 82.68\% of test examples resulting in ties. 
+OPSD achieved the higher BERTScore-F1 on 8.33\% of examples, while SFT was better on 
+8.98\%. The near-symmetric win rates are consistent with the negligible aggregate 
+difference between the two methods and the bootstrap confidence interval crossing zero.
+
+Overall, the results for RQ1 show that OPSD did not outperform conventional SFT in 
+terms of BERTScore-F1. SFT was substantially stronger for SmolVLM and BLIP, while 
+the two methods achieved near-identical performance for MiniCPM. With respect to RQ2, 
+the relative OPSD--SFT gap varied considerably across architectures. 
+The difference decreased from (-0.0453) for SmolVLM to (-0.0157) for BLIP and to 
+approximately zero for MiniCPM. This demonstrates that the relative effectiveness of 
+OPSD was strongly model-dependent.
+
