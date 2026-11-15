@@ -1,6 +1,6 @@
 \section{Results}\label{results}
 
-\subsection{Overall Performance}
+\subsection{Overall Performance}\label{overall_performance}
 
 \autoref{tab:performance} summarises the final test performance of the pretrained baseline, SFT and
 OPSD conditions across all three VLMs. BertScore-F1 is reported as the primary metric with
@@ -61,10 +61,16 @@ considerably smaller for MiniCPM. SFT achieved a BERTScore-F1 of 0.9806, while
 OPSD achieved 0.9805. Exact-match performance was slightly higher under OPSD, 
 increasing from 0.7904 under SFT to 0.7956.
 
+The effectiveness of the privileged teacher was also assessed before fine-tuning by comparing
+the crop-conditioned and full-image predictions of each pretrained model. The mean BERTScore-F1
+advantage of the crop-conditioned teacher was $-0.00067$ for SmolVLM, $+0.00188$ for BLIP
+and $-0.00027$ for MiniCPM. These results indicate that the privileged crops did not
+provide a consistent average performance advantage across the three architectures.
+
 \subsection{Paired Statistical Comparison}
 
 To directly compare SFT and OPSD, a paired analysis was performed over the same held-out test
-set. \autoref{tab:paired_differences} reports the mean per-exmaple BERTScore-F1 difference together with
+set. \autoref{tab:paired_differences} reports the mean per-example BERTScore-F1 difference together with
 the corresponding 95\% bootstrap confidence interval:
 
 \begin{table}[h!]
@@ -98,16 +104,15 @@ For SmolVLM and BLIP, the confidence intervals are entirely below zero, indicati
 consistent advantage for SFT over OPSD on the held-out test set. SmolVLM showed the 
 largest difference, with OPSD trailing SFT by 0.0453 BERTScore-F1, followed by BLIP 
 with a difference of 0.0157. For MiniCPM, the difference between OPSD and SFT was 
-negligible ((-0.0001)), and the confidence interval crossed zero. This indicates no 
-clear difference between the two methods in terms of BERTScore-F1 for this architecture. 
-OPSD nevertheless achieved a small absolute improvement in exact-match accuracy of 
-approximately 0.52 percentage points compared with SFT.
+negligible (-0.0001), and the confidence interval crossed zero. Although OPSD achieved a small
+exact-match improvement of approximately 0.52 percentage points, the BERTScore-F1 results do not
+establish a statistically clear advantage for either method.
 
 \subsection{Per-example Win/Loss Analysis}
 
-To complement the aggregate BertScore-F1 comparsion, the paired test predictions were
+To complement the aggregate BertScore-F1 comparison, the paired test predictions were
 also analysed at the individual-question level. For each test example, OPSD was classified
-as better than SFT when its per-examle BertScore-F1 was higher, SFT was classified as better
+as better than SFT when its per-example BertScore-F1 was higher, SFT was classified as better
 when its score was higher and equal scores were treated as ties. \autoref{tab:per_example_comparison}
 reports the resulting proportions across the 768 paired test examples:
 
@@ -163,6 +168,7 @@ terms of BERTScore-F1. SFT was substantially stronger for SmolVLM and BLIP, whil
 the two methods achieved near-identical performance for MiniCPM. With respect to RQ2, 
 the relative OPSD--SFT gap varied considerably across architectures. 
 The difference decreased from (-0.0453) for SmolVLM to (-0.0157) for BLIP and to 
-approximately zero for MiniCPM. This demonstrates that the relative effectiveness of 
-OPSD was strongly model-dependent.
+approximately zero for MiniCPM. This findings indicate that the relative effectiveness
+of OPSD varied across the evaluated VLMs, suggesting that model characteristics may influence the
+benefits of privileged-context self-distillation.
 

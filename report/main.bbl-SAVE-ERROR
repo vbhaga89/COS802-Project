@@ -1,0 +1,449 @@
+% $ biblatex auxiliary file $
+% $ biblatex bbl format version 3.3 $
+% Do not modify the above lines!
+%
+% This is an auxiliary file used by the 'biblatex' package.
+% This file may safely be deleted. It will be recreated by
+% biber as required.
+%
+\begingroup
+\makeatletter
+\@ifundefined{ver@biblatex.sty}
+  {\@latex@error
+     {Missing 'biblatex' package}
+     {The bibliography requires the 'biblatex' package.}
+      \aftergroup\endinput}
+  {}
+\endgroup
+
+
+\refsection{0}
+  \datalist[entry]{none/global//global/global/global}
+    \entry{zhao2601self}{inproceedings}{}{}
+      \name{author}{7}{}{%
+        {{hash=23068c52135450fed4ad5e6027cf004b}{%
+           family={Zhao},
+           familyi={Z\bibinitperiod},
+           given={Siyan},
+           giveni={S\bibinitperiod}}}%
+        {{hash=8d523514d4643af608d6265eb51df649}{%
+           family={Xie},
+           familyi={X\bibinitperiod},
+           given={Zhihui},
+           giveni={Z\bibinitperiod}}}%
+        {{hash=1abb7f4e37e5ea4c1296b92783437793}{%
+           family={Liu},
+           familyi={L\bibinitperiod},
+           given={Mengchen},
+           giveni={M\bibinitperiod}}}%
+        {{hash=dc6a25244d65d1c3b76b8da8ba84b54c}{%
+           family={Huang},
+           familyi={H\bibinitperiod},
+           given={Jing},
+           giveni={J\bibinitperiod}}}%
+        {{hash=5b08b637a3bab8f27d66577f48f39899}{%
+           family={Pang},
+           familyi={P\bibinitperiod},
+           given={Guan},
+           giveni={G\bibinitperiod}}}%
+        {{hash=1fca32cc57d656ccfd9be11f4cd9f3df}{%
+           family={Chen},
+           familyi={C\bibinitperiod},
+           given={Feiyu},
+           giveni={F\bibinitperiod}}}%
+        {{hash=0e7ecffac4441691ff61e0b68d89cd33}{%
+           family={Grover},
+           familyi={G\bibinitperiod},
+           given={Aditya},
+           giveni={A\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {PMLR}%
+      }
+      \strng{namehash}{4a50b3a9d9ce2d914944b3d58e1a68eb}
+      \strng{fullhash}{b5527d54f65e1e35b7cb75aa0650e230}
+      \strng{fullhashraw}{b5527d54f65e1e35b7cb75aa0650e230}
+      \strng{bibnamehash}{4a50b3a9d9ce2d914944b3d58e1a68eb}
+      \strng{authorbibnamehash}{4a50b3a9d9ce2d914944b3d58e1a68eb}
+      \strng{authornamehash}{4a50b3a9d9ce2d914944b3d58e1a68eb}
+      \strng{authorfullhash}{b5527d54f65e1e35b7cb75aa0650e230}
+      \strng{authorfullhashraw}{b5527d54f65e1e35b7cb75aa0650e230}
+      \field{sortinit}{1}
+      \field{sortinithash}{4f6aaa89bab872aa0999fec09ff8e98a}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{booktitle}{Proceedings of the 43rd International Conference on Machine Learning}
+      \field{series}{Proceedings of Machine Learning Research}
+      \field{title}{Self-Distilled Reasoner: On-Policy Self-Distillation for Large Language Models}
+      \field{volume}{306}
+      \field{year}{2026}
+      \field{pages}{162433\bibrangedash 162448}
+      \range{pages}{16}
+      \verb{urlraw}
+      \verb https://proceedings.mlr.press/v306/zhao26be.html
+      \endverb
+      \verb{url}
+      \verb https://proceedings.mlr.press/v306/zhao26be.html
+      \endverb
+    \endentry
+    \entry{yuan2026vision}{article}{}{}
+      \name{author}{7}{}{%
+        {{hash=fe05f288990ab27ac76a70f9c6ecaeac}{%
+           family={Yuan},
+           familyi={Y\bibinitperiod},
+           given={Qianhao},
+           giveni={Q\bibinitperiod}}}%
+        {{hash=7813eaf7f9f661df84b20cd98705cfdd}{%
+           family={Lou},
+           familyi={L\bibinitperiod},
+           given={Jie},
+           giveni={J\bibinitperiod}}}%
+        {{hash=8091220e248ee30fc9fd4f499d71d2e9}{%
+           family={Yu},
+           familyi={Y\bibinitperiod},
+           given={Xing},
+           giveni={X\bibinitperiod}}}%
+        {{hash=4262dba624d36dd8003a7307e54936d9}{%
+           family={Lin},
+           familyi={L\bibinitperiod},
+           given={Hongyu},
+           giveni={H\bibinitperiod}}}%
+        {{hash=41535dc71798b1229b7cd375aceb2495}{%
+           family={Sun},
+           familyi={S\bibinitperiod},
+           given={Le},
+           giveni={L\bibinitperiod}}}%
+        {{hash=42c1a9ce9afd2af45cb34fbf4194d3f9}{%
+           family={Han},
+           familyi={H\bibinitperiod},
+           given={Xianpei},
+           giveni={X\bibinitperiod}}}%
+        {{hash=4440f08a27ab10c47d94440bf5103abb}{%
+           family={Lu},
+           familyi={L\bibinitperiod},
+           given={Yaojie},
+           giveni={Y\bibinitperiod}}}%
+      }
+      \strng{namehash}{d8088c12dc565047b42cdf3cc1043661}
+      \strng{fullhash}{ccabe72eadcc4f95b769dcb5b78feb89}
+      \strng{fullhashraw}{ccabe72eadcc4f95b769dcb5b78feb89}
+      \strng{bibnamehash}{d8088c12dc565047b42cdf3cc1043661}
+      \strng{authorbibnamehash}{d8088c12dc565047b42cdf3cc1043661}
+      \strng{authornamehash}{d8088c12dc565047b42cdf3cc1043661}
+      \strng{authorfullhash}{ccabe72eadcc4f95b769dcb5b78feb89}
+      \strng{authorfullhashraw}{ccabe72eadcc4f95b769dcb5b78feb89}
+      \field{sortinit}{2}
+      \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{arXiv preprint arXiv:2605.18740}
+      \field{title}{Vision-opd: Learning to see fine details for multimodal llms via on-policy self-distillation}
+      \field{year}{2026}
+    \endentry
+    \entry{hudson2019gqa}{inproceedings}{}{}
+      \name{author}{2}{}{%
+        {{hash=b2756a270aa1e5d4a20fa3ed9b6e1f8c}{%
+           family={Hudson},
+           familyi={H\bibinitperiod},
+           given={Drew\bibnamedelima A},
+           giveni={D\bibinitperiod\bibinitdelim A\bibinitperiod}}}%
+        {{hash=2214edb8305f7ccd7cdc310b3a8ae1b4}{%
+           family={Manning},
+           familyi={M\bibinitperiod},
+           given={Christopher\bibnamedelima D},
+           giveni={C\bibinitperiod\bibinitdelim D\bibinitperiod}}}%
+      }
+      \list{organization}{1}{%
+        {IEEE}%
+      }
+      \strng{namehash}{c9ae87a11d6a30b9a79e23702c90ec9e}
+      \strng{fullhash}{c9ae87a11d6a30b9a79e23702c90ec9e}
+      \strng{fullhashraw}{c9ae87a11d6a30b9a79e23702c90ec9e}
+      \strng{bibnamehash}{c9ae87a11d6a30b9a79e23702c90ec9e}
+      \strng{authorbibnamehash}{c9ae87a11d6a30b9a79e23702c90ec9e}
+      \strng{authornamehash}{c9ae87a11d6a30b9a79e23702c90ec9e}
+      \strng{authorfullhash}{c9ae87a11d6a30b9a79e23702c90ec9e}
+      \strng{authorfullhashraw}{c9ae87a11d6a30b9a79e23702c90ec9e}
+      \field{sortinit}{3}
+      \field{sortinithash}{ad6fe7482ffbd7b9f99c9e8b5dccd3d7}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{booktitle}{2019 IEEE/CVF Conference on Computer Vision and Pattern Recognition (CVPR)}
+      \field{title}{Gqa: A new dataset for real-world visual reasoning and compositional question answering}
+      \field{year}{2019}
+      \field{pages}{6693\bibrangedash 6702}
+      \range{pages}{10}
+    \endentry
+    \entry{krishna2017visual}{article}{}{}
+      \true{moreauthor}
+      \true{morelabelname}
+      \name{author}{10}{}{%
+        {{hash=e9cf8ade7c94f1084ea6832928a36fef}{%
+           family={Krishna},
+           familyi={K\bibinitperiod},
+           given={Ranjay},
+           giveni={R\bibinitperiod}}}%
+        {{hash=f86434cb0d86ba7eac5b0e3f3236abf0}{%
+           family={Zhu},
+           familyi={Z\bibinitperiod},
+           given={Yuke},
+           giveni={Y\bibinitperiod}}}%
+        {{hash=3a5173ca0a5b2415dd44ff7cdb78df26}{%
+           family={Groth},
+           familyi={G\bibinitperiod},
+           given={Oliver},
+           giveni={O\bibinitperiod}}}%
+        {{hash=90edc587e1d523d4e173b1fe6e733445}{%
+           family={Johnson},
+           familyi={J\bibinitperiod},
+           given={Justin},
+           giveni={J\bibinitperiod}}}%
+        {{hash=017446a099a91877e510b892600019e6}{%
+           family={Hata},
+           familyi={H\bibinitperiod},
+           given={Kenji},
+           giveni={K\bibinitperiod}}}%
+        {{hash=8124ec435d0bb1c20f7d1c980269590c}{%
+           family={Kravitz},
+           familyi={K\bibinitperiod},
+           given={Joshua},
+           giveni={J\bibinitperiod}}}%
+        {{hash=1d08e476f1c877179a73cc102d697904}{%
+           family={Chen},
+           familyi={C\bibinitperiod},
+           given={Stephanie},
+           giveni={S\bibinitperiod}}}%
+        {{hash=27bc92f2de97cf6b5dcb5c329d6188e3}{%
+           family={Kalantidis},
+           familyi={K\bibinitperiod},
+           given={Yannis},
+           giveni={Y\bibinitperiod}}}%
+        {{hash=2afdae52015b97674d81efea449edce2}{%
+           family={Li},
+           familyi={L\bibinitperiod},
+           given={Li-Jia},
+           giveni={L\bibinithyphendelim J\bibinitperiod}}}%
+        {{hash=bd5560c0c54d9552cb7194da66c1b047}{%
+           family={Shamma},
+           familyi={S\bibinitperiod},
+           given={David\bibnamedelima A},
+           giveni={D\bibinitperiod\bibinitdelim A\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {Springer}%
+      }
+      \strng{namehash}{6e123636292d5acb3e59a2dea095df77}
+      \strng{fullhash}{aa852c5921c6d719699ec2f0f59c5b74}
+      \strng{fullhashraw}{aa852c5921c6d719699ec2f0f59c5b74}
+      \strng{bibnamehash}{6e123636292d5acb3e59a2dea095df77}
+      \strng{authorbibnamehash}{6e123636292d5acb3e59a2dea095df77}
+      \strng{authornamehash}{6e123636292d5acb3e59a2dea095df77}
+      \strng{authorfullhash}{aa852c5921c6d719699ec2f0f59c5b74}
+      \strng{authorfullhashraw}{aa852c5921c6d719699ec2f0f59c5b74}
+      \field{sortinit}{4}
+      \field{sortinithash}{9381316451d1b9788675a07e972a12a7}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{International journal of computer vision}
+      \field{number}{1}
+      \field{title}{Visual genome: Connecting language and vision using crowdsourced dense image annotations}
+      \field{volume}{123}
+      \field{year}{2017}
+      \field{pages}{32\bibrangedash 73}
+      \range{pages}{42}
+    \endentry
+    \entry{li2022blip}{inproceedings}{}{}
+      \name{author}{4}{}{%
+        {{hash=1c6e653d1c884531f9bc28d48227c534}{%
+           family={Li},
+           familyi={L\bibinitperiod},
+           given={Junnan},
+           giveni={J\bibinitperiod}}}%
+        {{hash=cfb6f977c40fc5578819476518c7a6b9}{%
+           family={Li},
+           familyi={L\bibinitperiod},
+           given={Dongxu},
+           giveni={D\bibinitperiod}}}%
+        {{hash=1fa4dfdd5ecf049d39575fe7ba1ec9f3}{%
+           family={Xiong},
+           familyi={X\bibinitperiod},
+           given={Caiming},
+           giveni={C\bibinitperiod}}}%
+        {{hash=4bc898a2cf65674ccedd453175918703}{%
+           family={Hoi},
+           familyi={H\bibinitperiod},
+           given={Steven},
+           giveni={S\bibinitperiod}}}%
+      }
+      \strng{namehash}{289ed8c05ba9b69b62b4cf97de3e513f}
+      \strng{fullhash}{b3a8e231d9cb4040f3e46c2c87cc12a8}
+      \strng{fullhashraw}{b3a8e231d9cb4040f3e46c2c87cc12a8}
+      \strng{bibnamehash}{b3a8e231d9cb4040f3e46c2c87cc12a8}
+      \strng{authorbibnamehash}{b3a8e231d9cb4040f3e46c2c87cc12a8}
+      \strng{authornamehash}{289ed8c05ba9b69b62b4cf97de3e513f}
+      \strng{authorfullhash}{b3a8e231d9cb4040f3e46c2c87cc12a8}
+      \strng{authorfullhashraw}{b3a8e231d9cb4040f3e46c2c87cc12a8}
+      \field{sortinit}{5}
+      \field{sortinithash}{20e9b4b0b173788c5dace24730f47d8c}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{booktitle}{Proceedings of the 39th International Conference on Machine Learning}
+      \field{title}{BLIP: Bootstrapping Language-Image Pre-training for Unified Vision-Language Understanding and Generation}
+      \field{year}{2022}
+      \verb{urlraw}
+      \verb https://arxiv.org/abs/2201.12086
+      \endverb
+      \verb{url}
+      \verb https://arxiv.org/abs/2201.12086
+      \endverb
+    \endentry
+    \entry{hinton2015distilling}{article}{}{}
+      \name{author}{3}{}{%
+        {{hash=9a8750ccdb2a4cf14d2655face1ce016}{%
+           family={Hinton},
+           familyi={H\bibinitperiod},
+           given={Geoffrey},
+           giveni={G\bibinitperiod}}}%
+        {{hash=494b568c5dc85ba8f3f409635f9c5f25}{%
+           family={Vinyals},
+           familyi={V\bibinitperiod},
+           given={Oriol},
+           giveni={O\bibinitperiod}}}%
+        {{hash=62f954323339abeba6c6a240e9d2855b}{%
+           family={Dean},
+           familyi={D\bibinitperiod},
+           given={Jeff},
+           giveni={J\bibinitperiod}}}%
+      }
+      \strng{namehash}{394c7f90c50c43b0c3394f0b9f423e53}
+      \strng{fullhash}{ffe4fa3a93a3b1a8ca1d3c8b76f864d7}
+      \strng{fullhashraw}{ffe4fa3a93a3b1a8ca1d3c8b76f864d7}
+      \strng{bibnamehash}{ffe4fa3a93a3b1a8ca1d3c8b76f864d7}
+      \strng{authorbibnamehash}{ffe4fa3a93a3b1a8ca1d3c8b76f864d7}
+      \strng{authornamehash}{394c7f90c50c43b0c3394f0b9f423e53}
+      \strng{authorfullhash}{ffe4fa3a93a3b1a8ca1d3c8b76f864d7}
+      \strng{authorfullhashraw}{ffe4fa3a93a3b1a8ca1d3c8b76f864d7}
+      \field{sortinit}{7}
+      \field{sortinithash}{108d0be1b1bee9773a1173443802c0a3}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{arXiv preprint arXiv:1503.02531}
+      \field{title}{Distilling the Knowledge in a Neural Network}
+      \field{year}{2015}
+      \verb{urlraw}
+      \verb https://arxiv.org/abs/1503.02531
+      \endverb
+      \verb{url}
+      \verb https://arxiv.org/abs/1503.02531
+      \endverb
+    \endentry
+    \entry{hu2026evidencealigned}{article}{}{}
+      \name{author}{4}{}{%
+        {{hash=c5abfd62f85b83c33385aaf5869b0c76}{%
+           family={Hu},
+           familyi={H\bibinitperiod},
+           given={Nanxing},
+           giveni={N\bibinitperiod}}}%
+        {{hash=e6e5ceabbe4298d8b69c61a5ff316279}{%
+           family={Yan},
+           familyi={Y\bibinitperiod},
+           given={Qiwei},
+           giveni={Q\bibinitperiod}}}%
+        {{hash=02dfea5dccfdb13d15145af7dad32645}{%
+           family={Zhang},
+           familyi={Z\bibinitperiod},
+           given={Jinchao},
+           giveni={J\bibinitperiod}}}%
+        {{hash=3c065eed66394a54f1d36a69511ea026}{%
+           family={Kang},
+           familyi={K\bibinitperiod},
+           given={Guoliang},
+           giveni={G\bibinitperiod}}}%
+      }
+      \strng{namehash}{4b6af94999074c9cef369492a9e892a4}
+      \strng{fullhash}{562cf135917632198ad2959c00069265}
+      \strng{fullhashraw}{562cf135917632198ad2959c00069265}
+      \strng{bibnamehash}{562cf135917632198ad2959c00069265}
+      \strng{authorbibnamehash}{562cf135917632198ad2959c00069265}
+      \strng{authornamehash}{4b6af94999074c9cef369492a9e892a4}
+      \strng{authorfullhash}{562cf135917632198ad2959c00069265}
+      \strng{authorfullhashraw}{562cf135917632198ad2959c00069265}
+      \field{extraname}{1}
+      \field{sortinit}{1}
+      \field{sortinithash}{4f6aaa89bab872aa0999fec09ff8e98a}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{arXiv preprint arXiv:2609.34672}
+      \field{title}{Evidence-Aligned Multimodal On-Policy Self-Distillation for Fine-Grained Visual Understanding}
+      \field{year}{2026}
+      \verb{urlraw}
+      \verb https://arxiv.org/abs/2609.34672
+      \endverb
+      \verb{url}
+      \verb https://arxiv.org/abs/2609.34672
+      \endverb
+    \endentry
+    \entry{hu2021lora}{article}{}{}
+      \name{author}{8}{}{%
+        {{hash=e6a95d07b8ae7f14e4eb777c6980a059}{%
+           family={Hu},
+           familyi={H\bibinitperiod},
+           given={Edward\bibnamedelima J},
+           giveni={E\bibinitperiod\bibinitdelim J\bibinitperiod}}}%
+        {{hash=1701c0f05662e92cf52cfc8c16437496}{%
+           family={Shen},
+           familyi={S\bibinitperiod},
+           given={Yelong},
+           giveni={Y\bibinitperiod}}}%
+        {{hash=ab0fdbc1586103dda7ac5e0852e5b2c3}{%
+           family={Wallis},
+           familyi={W\bibinitperiod},
+           given={Phillip},
+           giveni={P\bibinitperiod}}}%
+        {{hash=eaa5cc98b7f19b4ce07c832213a13b9d}{%
+           family={Allen-Zhu},
+           familyi={A\bibinithyphendelim Z\bibinitperiod},
+           given={Zeyuan},
+           giveni={Z\bibinitperiod}}}%
+        {{hash=0d2c91b24f885b22d373a892a768abc8}{%
+           family={Li},
+           familyi={L\bibinitperiod},
+           given={Yuanzhi},
+           giveni={Y\bibinitperiod}}}%
+        {{hash=b654b88ecd4c3ff1ea29da275bce701c}{%
+           family={Wang},
+           familyi={W\bibinitperiod},
+           given={Shean},
+           giveni={S\bibinitperiod}}}%
+        {{hash=55f210233ac686af68eba11a97bd84e2}{%
+           family={Wang},
+           familyi={W\bibinitperiod},
+           given={Lu},
+           giveni={L\bibinitperiod}}}%
+        {{hash=05d71a9c5e7ac79222e01a55af0ccb93}{%
+           family={Chen},
+           familyi={C\bibinitperiod},
+           given={Weizhu},
+           giveni={W\bibinitperiod}}}%
+      }
+      \strng{namehash}{d775178c34083951ab1e07df578582c3}
+      \strng{fullhash}{08f4b49735d5d145be00bc9c07f38975}
+      \strng{fullhashraw}{08f4b49735d5d145be00bc9c07f38975}
+      \strng{bibnamehash}{d775178c34083951ab1e07df578582c3}
+      \strng{authorbibnamehash}{d775178c34083951ab1e07df578582c3}
+      \strng{authornamehash}{d775178c34083951ab1e07df578582c3}
+      \strng{authorfullhash}{08f4b49735d5d145be00bc9c07f38975}
+      \strng{authorfullhashraw}{08f4b49735d5d145be00bc9c07f38975}
+      \field{extraname}{2}
+      \field{sortinit}{1}
+      \field{sortinithash}{4f6aaa89bab872aa0999fec09ff8e98a}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{arXiv preprint arXiv:2106.09685}
+      \field{title}{Lora: Low-rank adaptation of large language models}
+      \field{year}{2021}
+    \endentry
+  \enddatalist
+\endrefsection
+\endinput
+

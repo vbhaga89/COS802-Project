@@ -1,14 +1,15 @@
 \section{Conclusion}\label{conclusion}
 
-This work evaluated On-Policy Self-Distillation (OPSD) for visual answering using question-grounded
+This work evaluated On-Policy Self-Distillation (OPSD) for visual question-answering using question-grounded
 image crops as privileged teacher context. OPSD was compared with conventional Supervised Fine-Tuning (SFT)
-across three VLMs (SmolVLM, BLIP and MiniCPM) using the GQA dataset.
+across three VLMs (SmolVLM, BLIP and MiniCPM) using a filtered subset of GQA focused on localisable viusal questions.
 
-The results showed that SFT substantially outperformed OPSD form SmolVLM and BLIP, while the two
+The results showed that SFT substantially outperformed OPSD for SmolVLM and BLIP, while the two
 methods obtained near-identical BERTScore-F1 performance for MiniCPM. This indicates that OPSD was not 
 generally more effective than SFT under the experimental conditions considered, but its relative
-effectiveness varied across VLM architectures. The weak crop-teacher advantage observed before training
-suggests that the privileged context did not consistently provide a sufficient stronger supervisory signal.
+effectiveness varied across the evaluated VLMs. The weak crop-teacher advantage observed before training
+suggests that the privileged context did not consistently provide a sufficient stronger supervisory signal,
+potentially limiting the effectiveness of self-distillation.
 
 Qualitative analysis further showed that crop-based privileged supervision can be beneficial when relevant
 evidence is local and surrounded by distracting visual content, but can be harmful when broader

@@ -1,12 +1,5 @@
 \section{Introduction}\label{intro}
 
-% Vision-langauge models (VLMs) have become increasingly effective at processing visual and textual
-% information which has enabled tasks such as image captioning and visual question answering (VQA).
-% VQA is particularly useful for multimodal reasoning since the model would need to interpret 
-% an image and a natural-language question before producing an answer. Supervised fine-tuning (SFT)
-% is a way in which pretrained VLMs can be adapted for such tasks, where model parameters are optimised
-% directly against labelled target answers.
-
 Supervised Fine-Tuning (SFT) is a widely used post-training method in which the pretrained model
 is adapted using labelled input-output examples. In visual question answering (VQA) tasks, this 
 typically involves conditioning a vision-language model (VLM) on an image and question and 
@@ -36,7 +29,7 @@ question-relevant image crops without using the ground-truth answer \parencite{h
 dataset \parencite{krishna2017visual}. 
 
 The approach is evaluated across three VLMs with different architectures and capacities: SmolVLM-500M-Instruct,
-BLIP, and MiniCPM-V 5.6. Each model is assessed under three conditions: the pretrained baseline,
+BLIP, and MiniCPM-V 4.6. Each model is assessed under three conditions: the pretrained baseline,
 conventional SFT and OPSD. This enables a controlled experiment in which direct supervised adaptation can
 be compared to privileged-context self-distillation.
 

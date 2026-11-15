@@ -1,5 +1,7 @@
 \section{Experimental Setup}\label{experimental_setup}
 
+%%% need to talk more about the metrics
+
 \subsection{Data and Splits}
 
 Experiments were conducted using the GQA dataset which is based on the Visual Genome dataset \parencite{hudson2019gqa}.
@@ -30,7 +32,7 @@ Three VLMs with different architectures and capacities were evaluated:
 \end{itemize}
 
 Each architecture was evaluated under three conditions: the original pretrained model, SFT and OPSD.
-The pretrained condition provides a zero-shot reference, while SFT and PSD use the same training
+The pretrained condition provides a zero-shot reference, while SFT and OPSD use the same training
 split and parameter-efficient adaptation framework.
 
 \subsection{Training Configuration}
@@ -38,16 +40,19 @@ split and parameter-efficient adaptation framework.
 Both SFT and OPSD were implemented using LoRA \parencite{hu2021lora} with rank $r=8$ and scaling
 parameter $\alpha=16$. Only LoRA parameters were updated, while the underlying pretrained model
 weights remained frozen. Models were trained for three epochs using two NVIDIA T4 GPUs from 
-Kaggle with DistributedDataParallel. A per-device batch size of 1 and gradient accumulation
+Kaggle using \emph{DistributedDataParallel}. A per-device batch size of 1 and gradient accumulation
 over four steps were used, giving an effective batch size of $1 \times 2 \times 4 = 8$.
 
-The SFT learning rate was set to $1\times10^{-4}$, while the OPSD learning rate was set to $5\times10^{-6}$. The privileged teacher remained frozen
+The SFT learning rate was set to $1\times10^{-4}$, while the OPSD learning rate was set to $5\times10^{-6}$. 
+The learning rates were fixed across the three architectures for each training strategy.
+Consequently, the comparison reflects performance under the selected optimisation configurations,
+rather than isolating the training objective alone. The privileged teacher remained frozen
 while the full-image student LoRA parameters were updated. No supervised cross-entropy anchor was included
 in the OPSD objective. The Jensen-Shannon divergence was computed with equal weighting between the student
 and the teacher distributions.
 
 For each epoch, model performance was evaluated on the validation set. The checkpoint with the
-highest validation BETScore-F1 was selected as the final model for both SFT and OPSD. The held-out 
+highest validation BERTScore-F1 was selected as the final model for both SFT and OPSD. The held-out 
 test set was not used for hyperparameter selection or checkpoint selection.
 
 For each architecture, the following quantities were reported:
@@ -64,5 +69,21 @@ performed at the question level. For each example $i$,
 F1^{(i)}_{\mathrm{SFT}}.\]
 
 The mean paired difference was reported together with a 95\% bootstrap confidence interval using
-10000 resamples. The proportions of test examples for which OPSD outperformed SFT, SFT outperformed OPSD or 
+10000 resamples to quantify uncertainty in the BERTScore-F1 differences. The proportions of test examples for which OPSD outperformed SFT, SFT outperformed OPSD or 
 the two methods tied were also recorded.
+
+\subsection{Evaluation Metrics}
+
+Model performance was evaluated using BERTScore-F1 \parencite{zhang2020bertscore} as the primary metric and normalised
+Exact Match (EM) as a complementary measure. BERTScore compares contextual token embeddings
+between generated and reference answers, computing precision and recall based on semantic 
+similarity. Their harmonic mean produces the F1 score:
+\[
+F_1 = \frac{2PR}{P+R}.
+\]
+
+BERTScore was selected to account for semantically equivalent answers expressed using different
+wording. However, it may assign high similarity to factually incorrect short answers. Therefore, 
+normalised EM was also reported, measuring the proportion of predictions matching the reference
+answer after text normalisation. EM is particularly relevant for GQA, where answers frequently consist
+of short factual responses such as colours, object names and counts.

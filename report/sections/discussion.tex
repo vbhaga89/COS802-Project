@@ -1,7 +1,7 @@
 \section{Discussion}\label{discussion}
 
 The results show that OPSD did not consistently outperform conventional SFT for visual question
-answering. For SmolVLM and BLIP, SFT achieved substantially higher BertScore-F1 and exact-match
+answering. For SmolVLM and BLIP, SFT achieved a substantially higher BertScore-F1 and exact-match
 performance, while MiniCPM showed similar results between the two approaches which can be seen in \autoref{tab:performance}. These findings
 provide a negative answer to RQ1 under the experimental conditions considered: privileged-context
 OPSD alone was not generally more effective than direct supervised fine-tuning. However, the magnitude
@@ -9,7 +9,7 @@ of the difference varied considerably across architectures, providing a more nua
 
 \subsection{Why SFT Outperformed OPSD}
 
-The strongest explanation for the performance gap is the difference in supervision available to the
+One plausible explanation for the performance gap is the difference in supervision available to the
 two approaches. SFT receives direct supervision from the ground-truth answer at every training
 step. The optimisation objective therefore explicitly increases the likelihood of the correct target
 sequence. In contrast, OPSD condition used in this study receives no direct ground-truth supervision. Instead,
@@ -17,11 +17,8 @@ the student is trained only to match the token-level distribution produced by th
 teacher on the student's own generated trajectory.
 
 This observation becomes particularly important when the privileged teacher is only marginally better
-than the student. Prior to fine-tuning, the crop-conditioned teacher advantage was measured for each
-architecture. The BertScore-F1 advantage of the crop over the full image was $-0.00067$ for SmolVLM,
-$+0.00188$ for BLIP and $-0.00027$ for MiniCPM. These differences indicate that the privileged
-crop did not produce a consistently stronger teacher across architectures. Although the crop sometimes
-improved exact-match accuracy, its average advantage was small.
+than the student. As reported in \autoref{overall_performance}, the crop-conditioned teacher provided only a marginal average advantage,
+with negative differences for two of the three models. 
 
 OPSD relies on useful information being present in the difference between the teacher and student
 distributions. If the privileged teacher behaves similarly to or on occasion worse than the full-image
@@ -29,22 +26,15 @@ student, this can result in the distillation signal providing limited informatio
 existing behaviour. SFT, on the other hand, does not face this limitation since its supervisory signal
 is obtained from the labelled target (ground-truth answer). The relatively weak teacher advantage
 therefore provides a plausible explanation as to why OPSD remained close to the pretrained baseline for
-SmolVLM and BLIP while SFT produced better results.
+SmolVLM and BLIP while SFT produced better results. However, a small average teacher advantage
+does not necessarily imply identical teacher and student predictions, as improvements on individual 
+questions may be offset by cases where cropping removes necessary visual context
 
 \subsection{Architecture-Dependent Behaviour}
 
 Although SFT was stronger overall, the relative OPSD-SFT gap decreased substantially across the
-three architectures. From \autoref{tab:paired_differences}, it can be seen that the paired BERTScore-F1 difference improved from (-0.0453) for 
-SmolVLM to (-0.0157) for BLIP and finally to approximately zero ((-0.0001)) for 
-MiniCPM. For MiniCPM, the 95\% bootstrap confidence interval crossed zero and OPSD 
-achieved slightly higher exact-match accuracy than SFT.
-
+three architectures which can be seen by the paired analysis from \autoref{tab:paired_differences}.
 The per-example analysis seen in \autoref{tab:per_example_comparison} reinforces this difference.
-SmolVLM showed a strong preference towards SFT, which achieved a higher BERTScore-F1 on 
-81.77\% of examples. In contrast, MiniCPM produced identical scores for 82.68\% of test 
-examples, with OPSD and SFT winning on 8.33\% and 8.98\% respectively. This suggests 
-that OPSD and SFT converged to substantially more similar behaviour for MiniCPM than 
-for the smaller models.
 
 These results suggest that the effectiveness of privileged-context self-distillation may depend
 on model characteristics. A stronger multimodal model such as MiniCPM, may already possess
@@ -52,8 +42,10 @@ better visual grounding and reasoning capabilities, allowing it to make more eff
 subtle distributional differences between full-image and crop-conditioned contexts. On the other hand,
 a smaller model may benefit more from explicit labelled supervision than from a comparatively weak
 teacher signal. Importantly since only three architectures were evaluated, this pattern should not be used
-to infer a general relationship between model size and OPSD effectiveness but rather than indicator
-that OPSD performance cannot be assumed to transfer uniformly across VLM architectures.
+to infer a general relationship between model size and OPSD effectiveness but rather an indicator
+that OPSD performance cannot be assumed to transfer uniformly across VLM architectures. Furthermore,
+the evaluated models differ not only in architecture and capacity, but also in their pretraining and
+task specialisation. Consequently, the observed differences cannot be attributed to architecture alone.
 
 \subsection{Local Evidence Versus Global Context}
 
@@ -93,8 +85,10 @@ crop-conditioned teacher provides a more focused view of the relevant evidence, 
 intended benefit of privileged visual context. In contrast, \autoref{fig:sft} represents a case
 in which SFT correctly answer a question asking how large the boat was which OPSD got incorrect. Unlike
 the previous example, judging relative size requires information from the wider scene. By restricting
-the teacher to a local crop may therefore remove the contextual references required to make the correct
-judgement, even when padding is included.
+the teacher to a local crop, may therefore remove the contextual references required to make the correct
+judgement, even when padding is included. Although these examples illustrate the potential 
+benefits and limitations of localised evidence, they do not establish that cropping alone cause the
+observed differences, as the two training strategies also differ in their supervision.
 
 These two examples demonstrate that successful crop-based OPSD requires more than accurately localising
 the target object. The privileged context must preserve the complete evidence needed to answer the question.
@@ -103,10 +97,10 @@ potentially harmful when the required reasoning depends on global or relational 
 
 \subsection{Limitations and Future Work}
 
-Several limitations should be considered. First, the experiment used a 5000-examle subset of
+Several limitations should be considered. First, the experiment used a 5000-example subset of
 GQA, which may disadvantage OPSD because it relies on indirect distributional supervision rather than
 direct target labels. In addition, additional datasets, architectures and random seeds 
-would also be required before drawing broader conclusions about OPSD performance across VLMs.
+would also be required before drawing broader conclusions about OPSD performance across VLMs. 
 
 Second, the privileged teacher used deterministic question-grounded crops. Although unsuitable
 spatial and relational questions were filtered, GQA was not designed specifically for crop-based privileged
