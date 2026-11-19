@@ -28,7 +28,7 @@ is obtained from the labelled target (ground-truth answer). The relatively weak 
 therefore provides a plausible explanation as to why OPSD remained close to the pretrained baseline for
 SmolVLM and BLIP while SFT produced better results. However, a small average teacher advantage
 does not necessarily imply identical teacher and student predictions, as improvements on individual 
-questions may be offset by cases where cropping removes necessary visual context
+questions may be offset by cases where cropping removes necessary visual context.
 
 \subsection{Architecture-Dependent Behaviour}
 
@@ -92,7 +92,7 @@ observed differences, as the two training strategies also differ in their superv
 
 These two examples demonstrate that successful crop-based OPSD requires more than accurately localising
 the target object. The privileged context must preserve the complete evidence needed to answer the question.
-A crop than therefore be beneficial when the task depends mainly on fine-grained local evidence, but 
+A crop can therefore be beneficial when the task depends mainly on fine-grained local evidence, but 
 potentially harmful when the required reasoning depends on global or relational context.
 
 \subsection{Limitations and Future Work}
